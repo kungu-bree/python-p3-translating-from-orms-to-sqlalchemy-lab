@@ -1,22 +1,27 @@
 from models import Dog
 
 def create_table(base):
-    pass
+     __tablename__ = 'dogs'
 
+     id = Column(Integer(), primary_key=True)
+     name = Column(String())
+     breed = Column(String())
+    
 def save(session, dog):
     pass
 
 def get_all(session):
-    pass
+    dogs = session.query(Dog).all()
 
 def find_by_name(session, name):
-    pass
+    dog_by_name = [dog for dog in session.query(Dog.name)]
 
 def find_by_id(session, id):
-    pass
+     query = session.query(Dog).filter(Dog.id.like(1))
 
 def find_by_name_and_breed(session, name, breed):
     pass
 
 def update_breed(session, dog, breed):
-    pass
+    for dog in session.query(Dog):
+        dog.breed += "bulldog"
